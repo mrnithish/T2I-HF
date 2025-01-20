@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text-to-Image Generator</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        h1 { color: #4CAF50; }
+        input, button { padding: 10px; margin: 10px 0; width: 100%; max-width: 500px; }
+        .container { max-width: 500px; margin: 0 auto; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Text-to-Image Generator</h1>
+        <form id="generateForm">
+            <label for="prompt">Enter Prompt:</label>
+            <input type="text" id="prompt" name="prompt" placeholder="Astronaut riding a horse">
+            <label for="model">Select Model:</label>
+            <select id="model" name="model">
+                <option value="stabilityai/stable-diffusion-3.5-large-turbo">stabilityai/stable-diffusion-3.5-large-turbo</option>
+                <option value="stabilityai/stable-diffusion-xl-base-1.0">stabilityai/stable-diffusion-xl-base-1.0</option>
+                <option value="black-forest-labs/FLUX.1-dev">black-forest-labs/FLUX.1-dev</option>
+                <option value="strangerzonehf/Flux-Super-Realism-LoRA">strangerzonehf/Flux-Super-Realism-LoRA</option>
+                <option value="strangerzonehf/Flux-Midjourney-Mix2-LoRA">strangerzonehf/Flux-Midjourney-Mix2-LoRA</option>
+            </select>
+            <button type="button" id="enhanceButton">Enhance Prompt</button>
+            <button type="submit" id="generateButton" disabled>Generate Image</button>
+        </form>
+        <div id="result">
+            <h3>Generated Image:</h3>
+            <img id="generatedImage" style="max-width:100%; display:none;">
+            <p id="enhancedPrompt"></p>
+        </div>
+    </div>
+
+    <script>
+        let enhancedPrompt = "";
+
+        // Enhance the prompt
+        document.getElementById("enhanceButton").addEventListener("click", async function(event) {
+            const prompt = document.getElementById("prompt").value;
+            if (!prompt.trim()) {
+                alert("Please provide a prompt to enhance.");
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append("prompt", prompt);
+
+            const response = await fetch("/enhance_prompt", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+            if (data.enhanced_prompt) {
+                enhancedPrompt = data.enhanced_prompt;
+                document.getElementById("enhancedPrompt").textContent = "Enhanced Prompt: " + enhancedPrompt;
+                document.getElementById("generateButton").disabled = false;  // Enable the generate button
+            } else {
+                alert("Error: " + data.error);
+            }
+        });
+
+        // Generate the image with the enhanced prompt
+        document.getElementById("generateForm").addEventListener("submit", async function(event) {
+            event.preventDefault();
+
+            const prompt = enhancedPrompt || document.getElementById("prompt").value;
+            const model = document.getElementById("model").value;
+
+            const formData = new FormData();
+            formData.append("prompt", prompt);
+            formData.append("model", model);
+
+            const response = await fetch("/generate_image", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+            if (data.image_url) {
+                const image = document.getElementById("generatedImage");
+                image.src = data.image_url;
+                image.style.display = "block";
+            } else {
+                alert("Error: " + data.error);
+            }
+        });
+    </script>
+</body>
+</html>

@@ -27,18 +27,14 @@ python -m venv env
 source env/bin/activate  # On Windows, use `env\Scripts\activate`
 ```
 
-### Step 3: Install Dependencies
-```bash
-pip install -r requirements.txt
-```
 
-### Step 4: Create an `.env` File
+### Step 3: Create an `.env` File
 Store your API keys and configuration in a `.env` file. Example:
 ```env
 HUGGINGFACE_TOKEN=your_huggingface_token
 ```
 
-### Step 5: Run the Application
+### Step 4: Run the Application
 ```bash
 streamlit run main.py
 ```

@@ -14,7 +14,6 @@ T2I-HF is a streamlined application for generating images from text prompts usin
 - Stable Diffusion-related libraries
 
 ## Setup Instructions
-
 ### Step 1: Clone the Repository
 ```bash
 git clone https://github.com/mrnithish/T2I-HF.git

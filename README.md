@@ -13,6 +13,7 @@ T2I-HF is a streamlined application for generating images from text prompts usin
 - Hugging Face Transformers
 - Stable Diffusion-related libraries
 
+
 ## Setup Instructions
 ### Step 1: Clone the Repository
 ```bash

@@ -20,6 +20,7 @@ git clone https://github.com/mrnithish/T2I-HF.git
 cd T2I-HF
 ```
 
+
 ### Step 2: Create a Virtual Environment
 ```bash
 python -m venv env

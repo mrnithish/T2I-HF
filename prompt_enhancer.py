@@ -24,3 +24,5 @@ class PromptEnhancer:
             return answer[0]['generated_text']
         except Exception as e:
             raise RuntimeError(f"Error enhancing prompt: {e}")
+
+

@@ -12,11 +12,13 @@ api_token = os.getenv("HUGGINGFACE_API_TOKEN")
 
 app = FastAPI()
 
+
 # Initialize Prompt Enhancer
 enhancer = PromptEnhancer()
 
 # Static file serving for frontend
 app.mount("/static", StaticFiles(directory="static"), name="static")
+
 
 @app.get("/", response_class=HTMLResponse)
 async def read_root():

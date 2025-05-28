@@ -7,6 +7,7 @@ T2I-HF is a streamlined application for generating images from text prompts usin
 1. **Prompt Enhancer:** Automatically refines your text prompts to produce higher-quality images.
 2. **Image Generator:** Leverages Hugging Face community models like Stable Diffusion and FLUX for generating images from text.
 
+
 ## Requirements
 - Python 3.8+
 - Streamlit

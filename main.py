@@ -11,6 +11,7 @@ load_dotenv()
 api_token = os.getenv("HUGGINGFACE_API_TOKEN")
 
 
+
 # Streamlit app layout
 st.title("Text-to-Image Generator")
 st.sidebar.header("Settings")

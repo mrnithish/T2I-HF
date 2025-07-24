@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 import os
 from prompt_enhancer import PromptEnhancer
 
+
 # Load environment variables
 load_dotenv()
 api_token = os.getenv("HUGGINGFACE_API_TOKEN")

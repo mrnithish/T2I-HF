@@ -1,5 +1,6 @@
 from transformers import pipeline, AutoTokenizer, AutoModelForSeq2SeqLM
 
+
 class PromptEnhancer:
     def __init__(self, model_checkpoint="gokaygokay/Flux-Prompt-Enhance", device="cpu"):
         """Initialize the Prompt Enhancer class with model and tokenizer."""

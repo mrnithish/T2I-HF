@@ -1,6 +1,5 @@
 # T2I-HF: Text-to-Image with Multiple Models (Hugging Face and Prompt Enhancer)
 
-
 ## Overview
 T2I-HF is a streamlined application for generating images from text prompts using Hugging Face's powerful models. The application includes a prompt enhancer and supports multiple image generation models such as Stable Diffusion. The user-friendly interface is powered by Streamlit, allowing seamless interaction.
 

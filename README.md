@@ -37,6 +37,7 @@ HUGGINGFACE_TOKEN=your_huggingface_token
 streamlit run main.py
 ```
 
+
 ## Usage
 1. Enter your text prompt in the input box.
 2. (Optional) Use the prompt enhancer to refine your text.
